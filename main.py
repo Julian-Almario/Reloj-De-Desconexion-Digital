@@ -21,10 +21,12 @@ ldr = machine.ADC(27)
 
 #Display Date
 while True:
+    d.measure() # Leer datos de DHT11 (todavia no probado)
     oled.text("BUENAS NOCHES :)", 0, 0)
     oled.text("{}/{}/{}" .format(ds.day(),ds.month(),ds.year()), 0, 17)
     oled.text("{}:{}:{}" .format(ds.hour(), ds.minute(),ds.second()), 0,27)
     oled.text("{}" .format(ldr.read_u16()), 0,34)
+    oled.text("{}" .format(d.temperature(), d.humidity()), 0, 41)
     #oled.text("{}:{}" .format(dht.humidity(), dht.temperature()), 0, 34)
     time.sleep(1)
     oled.show() #Renderizo texto en pantalla
