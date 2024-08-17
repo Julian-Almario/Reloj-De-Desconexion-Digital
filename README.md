@@ -7,7 +7,7 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 
 
 <p align="center">
-<img src="/images/readme_images/RDDDv0,1.jpg" width="50%" alt="Prototipe RDDD v0.1">
+<img src="/readme_img/RDDDv0,1.jpg" width="50%" alt="Prototipe RDDD v0.1">
 <figcaption>Prototipe RDDD v0.1</figcaption>
 </p>
 
