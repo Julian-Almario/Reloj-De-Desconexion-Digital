@@ -8,7 +8,6 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 
 <p align="center">
 <img src="/readme_img/RDDDv0,1.jpg" width="50%" alt="Prototipe RDDD v0.1">
-<figcaption>Prototipe RDDD v0.1</figcaption>
 </p>
 
 ## TODO
@@ -16,7 +15,13 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 * [x] Funcionamiento de Display
 * [x] Lectura de modulo RTC 
 * [x] Lectura de Fotoresitor
-* [ ] Lectura de datos de hmedad y temperatura ambiente
+* [/] Lectura de datos de humedad y temperatura ambiente
 * [ ] Led indicador de alarma
 * [ ] Boton para desactivar alarma
 * [ ] Animaciones y decorado de eventos en pantalla
+
+## Schematic
+
+<p align="center">
+<img src="/readme_img/schematic.png" alt="Schematic">
+</p>
