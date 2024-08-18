@@ -18,7 +18,7 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 * [/] Lectura de datos de humedad y temperatura ambiente
 * [ ] Led indicador de alarma
 * [ ] Boton para desactivar alarma
-* [ ] Animaciones y decorado de eventos en pantalla
+* [x] Animaciones y decorado de eventos en pantalla
 
 ## Schematic
 
