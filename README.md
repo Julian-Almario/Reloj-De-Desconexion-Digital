@@ -7,7 +7,7 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 
 
 <p align="center">
-<img src="/readme_img/RDDDv0,1.jpg" width="50%" alt="Prototipe RDDD v0.1">
+<img src="/readme_img/RDDDv0,2.jpg" width="50%" alt="Prototipe RDDD v0.1">
 </p>
 
 ## TODO
@@ -24,5 +24,5 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 ## Schematic
 
 <p align="center">
-<img src="/readme_img/schematic.png" alt="Schematic">
+<img src="/readme_img/schematicv2.png" alt="Schematic">
 </p>
