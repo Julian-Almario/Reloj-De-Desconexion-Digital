@@ -15,6 +15,8 @@ ds = ds1302.DS1302(Pin(5),Pin(18),Pin(19)) # Inicio de RTC DS1302
 
 ldr = machine.ADC(27) # Inicio Fotoresistor
 
+buzzer = machine.Pin(15, Pin.OUT)
+
 #Pintar iconos en pantalla
 def Abrir_Icono(ruta_icono):
     doc = open(ruta_icono, "rb")
@@ -35,16 +37,22 @@ def Buenas(time): #Definir estado del dia
         oled.text("BUENAS NOCHES", 0, 0)
 
 # Hora y minuto de la alarma
-hora_alarma = 9
-minuto_alarma = 30
-intervalo_alarma = 40
+hora_alarma = 10
+minuto_alarma = 49
+intervalo_alarma = 49
 
 # Funcion de despertador
 def Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual):
-    if hora_alarma == hora_actual and  minuto_actual >= minuto_alarma and minuto_actual <= intervalo_alarma:
-        led.value(1)
-        time.sleep(1)
-        led.value(0)
+    if hora_alarma == hora_actual and minuto_actual >= minuto_alarma and minuto_actual <= intervalo_alarma:
+        if boton.value() == 0:
+            oled.fill(0)
+            oled.text("ALARMAAAA", 0, 0)
+            oled.show()
+            led.value(1)
+            buzzer.value(1)
+            time.sleep(2)
+            led.value(0)
+            buzzer.value(0)
         
 # Display Data
 while True:
@@ -52,6 +60,8 @@ while True:
     hora_actual = ds.hour() 
     minuto_actual = ds.minute()
     sensor_luz = ldr.read_u16()
+    
+    print(boton.value())
     
     # Eventos
     Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual)
@@ -66,7 +76,7 @@ while True:
     oled.text("{}:{}:{}" .format(ds.hour(), ds.minute(),ds.second()), 17,39)
     
     oled.show()
-    oled.fill(0) # Limpio la pantalla para que no se superponga el texto
+    oled.fill(0)# Limpio la pantalla para que no se superponga el texto
 
 #ds.year(2024)  # Set the year to 2085
 #ds.month(8)    # Set the month to January

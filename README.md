@@ -15,10 +15,11 @@ El programa esta escrito en MicroPython con el microcontrolador Raspberry pi pic
 * [x] Funcionamiento de Display
 * [x] Lectura de modulo RTC 
 * [x] Lectura de Fotoresitor
-* [/] Lectura de datos de humedad y temperatura ambiente
-* [ ] Led indicador de alarma
+* [?] Lectura de datos de humedad y temperatura ambiente
+* [x] Led indicador de alarma
+* [x] Sonido de alarma
 * [ ] Boton para desactivar alarma
-* [x] Animaciones y decorado de eventos en pantalla
+* [/] Animaciones y decorado de eventos en pantalla
 
 ## Schematic
 
