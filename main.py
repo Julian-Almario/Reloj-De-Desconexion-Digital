@@ -4,16 +4,18 @@ import ds1302
 import time
 import framebuf
 
-#Inicio de Display SSD1306
 i2c = I2C(0, scl=Pin(1), sda=Pin(0), freq=400000)
-oled = SSD1306_I2C(128,64,i2c)
+oled = SSD1306_I2C(128,64,i2c) #Inicio de Display SSD1306
 
-#Inicio de RTC DS1302
-ds = ds1302.DS1302(Pin(5),Pin(18),Pin(19))  # (clk, dio, cs)
+led = machine.Pin(20, machine.Pin.OUT) # led
 
-#Inicio Fotoresistor
-ldr = machine.ADC(27)
+boton = machine.Pin(22, machine.Pin.IN, machine.Pin.PULL_UP) # Boton
 
+ds = ds1302.DS1302(Pin(5),Pin(18),Pin(19)) # Inicio de RTC DS1302
+
+ldr = machine.ADC(27) # Inicio Fotoresistor
+
+#Pintar iconos en pantalla
 def Abrir_Icono(ruta_icono):
     doc = open(ruta_icono, "rb")
     doc.readline()
@@ -31,9 +33,30 @@ def Buenas(time): #Definir estado del dia
         oled.text("BUENAS TARDES", 0, 0)
     else:
         oled.text("BUENAS NOCHES", 0, 0)
+
+# Hora y minuto de la alarma
+hora_alarma = 9
+minuto_alarma = 30
+intervalo_alarma = 40
+
+# Funcion de despertador
+def Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual):
+    if hora_alarma == hora_actual and  minuto_actual >= minuto_alarma and minuto_actual <= intervalo_alarma:
+        led.value(1)
+        time.sleep(1)
+        led.value(0)
         
 # Display Data
 while True:
+    # Variables del loop
+    hora_actual = ds.hour() 
+    minuto_actual = ds.minute()
+    sensor_luz = ldr.read_u16()
+    
+    # Eventos
+    Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual)
+    
+    # Display print 
     Buenas(ds.hour()) #Buenas
     
     oled.blit(Abrir_Icono("img/calendario.pbm"), 0, 16)
@@ -42,15 +65,9 @@ while True:
     oled.blit(Abrir_Icono("img/reloj.pbm"), 0, 34)
     oled.text("{}:{}:{}" .format(ds.hour(), ds.minute(),ds.second()), 17,39)
     
-    oled.text("{}" .format(ldr.read_u16()), 17,55)
-    
-    time.sleep(1)
-    
-    oled.show() # Renderizo texto en pantalla
+    oled.show()
     oled.fill(0) # Limpio la pantalla para que no se superponga el texto
 
-
-# 
 #ds.year(2024)  # Set the year to 2085
 #ds.month(8)    # Set the month to January
 #ds.day(14)     # Set the day to 17th
