@@ -39,32 +39,37 @@ def Buenas(time): #Definir estado del dia
 # Hora y minuto de la alarma
 hora_alarma = 10
 minuto_alarma = 49
-intervalo_alarma = 49
 
 # Funcion de despertador
-def Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual):
-    if hora_alarma == hora_actual and minuto_actual >= minuto_alarma and minuto_actual <= intervalo_alarma:
-        if boton.value() == 0:
-            oled.fill(0)
-            oled.text("ALARMAAAA", 0, 0)
-            oled.show()
-            led.value(1)
-            buzzer.value(1)
-            time.sleep(2)
-            led.value(0)
-            buzzer.value(0)
-        
+def Alarma(hora_alarma, minuto_alarma):
+    while hora_alarma == ds.hour() and minuto_alarma == ds.minute():
+        oled.fill(0)
+        oled.text("ALARMAAAA", 0, 0)
+        oled.show()
+        led.value(1)
+        buzzer.value(1)
+        time.sleep(2)
+        led.value(0)
+        buzzer.value(0)
+
+        led.value(1)
+        buzzer.value(1)                  
+        time.sleep(3)
+        led.value(0)
+        buzzer.value(0)
+
+
+
+
 # Display Data
 while True:
     # Variables del loop
-    hora_actual = ds.hour() 
-    minuto_actual = ds.minute()
     sensor_luz = ldr.read_u16()
     
     print(boton.value())
     
     # Eventos
-    Alarma(hora_alarma, minuto_alarma, hora_actual, minuto_actual)
+    Alarma(hora_alarma, minuto_alarma)
     
     # Display print 
     Buenas(ds.hour()) #Buenas
