@@ -45,7 +45,7 @@ segundos_alarma = 0
 # Definir sonido
 def Bip():
     oled.fill(0)
-    oled.text("ALARMAAAAAA", 0, 0)
+    oled.text("ALARMAAAAAA", 64, 32)
     oled.show()
     led.value(1)
     buzzer.value(1)
