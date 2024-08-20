@@ -46,6 +46,19 @@ def Alarma(hora_alarma, minuto_alarma):
         oled.fill(0)
         oled.text("ALARMAAAA", 0, 0)
         oled.show()
+
+        led.value(1)
+        buzzer.value(1)
+        time.sleep(2)
+        led.value(0)
+        buzzer.value(0)
+
+        led.value(0)
+        buzzer.value(0)                  
+        time.sleep(2)
+        led.value(1)
+        buzzer.value(1)
+
         led.value(1)
         buzzer.value(1)
         time.sleep(2)
@@ -53,10 +66,23 @@ def Alarma(hora_alarma, minuto_alarma):
         buzzer.value(0)
 
         led.value(1)
-        buzzer.value(1)                  
-        time.sleep(3)
+        buzzer.value(1)
+        time.sleep(2)
         led.value(0)
         buzzer.value(0)
+
+        led.value(0)
+        buzzer.value(0)
+        time.sleep(2)
+        led.value(1)
+        buzzer.value(1)
+
+        led.value(1)
+        buzzer.value(1)
+        time.sleep(2)
+        led.value(0)
+        buzzer.value(0)
+
 
 
 
