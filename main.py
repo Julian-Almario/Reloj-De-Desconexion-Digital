@@ -36,66 +36,39 @@ def Buenas(time): #Definir estado del dia
     else:
         oled.text("BUENAS NOCHES", 0, 0)
 
+
 # Hora y minuto de la alarma
-hora_alarma = 10
-minuto_alarma = 49
+hora_alarma = 18
+minuto_alarma = 40
+segundos_alarma = 0
 
+# Definir sonido
+def Bip():
+    oled.fill(0)
+    oled.text("ALARMAAAAAA", 0, 0)
+    oled.show()
+    led.value(1)
+    buzzer.value(1)
+    time.sleep(1.5)
+    led.value(0)
+    buzzer.value(0)
+    time.sleep(1.5)
+    
 # Funcion de despertador
-def Alarma(hora_alarma, minuto_alarma):
-    while hora_alarma == ds.hour() and minuto_alarma == ds.minute():
-        oled.fill(0)
-        oled.text("ALARMAAAA", 0, 0)
-        oled.show()
-
-        led.value(1)
-        buzzer.value(1)
-        time.sleep(2)
-        led.value(0)
-        buzzer.value(0)
-
-        led.value(0)
-        buzzer.value(0)                  
-        time.sleep(2)
-        led.value(1)
-        buzzer.value(1)
-
-        led.value(1)
-        buzzer.value(1)
-        time.sleep(2)
-        led.value(0)
-        buzzer.value(0)
-
-        led.value(1)
-        buzzer.value(1)
-        time.sleep(2)
-        led.value(0)
-        buzzer.value(0)
-
-        led.value(0)
-        buzzer.value(0)
-        time.sleep(2)
-        led.value(1)
-        buzzer.value(1)
-
-        led.value(1)
-        buzzer.value(1)
-        time.sleep(2)
-        led.value(0)
-        buzzer.value(0)
-
-
-
-
+def Alarma(hora_alarma, minuto_alarma, segundos_alarma):
+    while boton.value() == 1 and hora_alarma == ds.hour() and minuto_alarma == ds.minute() and segundos_alarma == ds.second():
+        for i in range(10):
+            Bip()
+            if boton.value() == 0:
+                break
 
 # Display Data
 while True:
     # Variables del loop
     sensor_luz = ldr.read_u16()
-    
-    print(boton.value())
-    
+
     # Eventos
-    Alarma(hora_alarma, minuto_alarma)
+    Alarma(hora_alarma, minuto_alarma, segundos_alarma)
     
     # Display print 
     Buenas(ds.hour()) #Buenas
