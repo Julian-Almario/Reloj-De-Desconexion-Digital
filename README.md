@@ -16,11 +16,11 @@ Copiar en la rasberry pi pico archivos .py y carpeta img
 * [x] Funcionamiento de Display
 * [x] Lectura de modulo RTC 
 * [x] Lectura de Fotoresitor
-* [?] Lectura de datos de humedad y temperatura ambiente
 * [x] Led indicador de alarma
 * [x] Sonido de alarma
-* [ ] Boton para desactivar alarma
-* [/] Animaciones y decorado de eventos en pantalla
+* [x] Boton para desactivar alarma
+* [x] Decorado de eventos en pantalla
+* [ ] Pomodoro mode
 
 ## Schematic
 
