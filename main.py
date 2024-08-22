@@ -104,10 +104,14 @@ def Abrir_Icono(ruta_icono):
 def Buenas(time):
     if time >= 1 and time <= 12:
         oled.text("BUENOS DIAS", 0, 0)
+        oled.contrast(255)
     elif time >= 12 and time <= 18:
         oled.text("BUENAS TARDES", 0, 0)
+        oled.contrast(255)
     else:
         oled.text("BUENAS NOCHES", 0, 0)
+        oled.contrast(1)
+        
 
 # Definir sonido
 def Bip():
